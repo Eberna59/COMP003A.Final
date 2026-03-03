@@ -36,8 +36,8 @@ namespace COMP003A.Final
         public double Bmi;
 
         // Boolean Fields
-        public bool WantsaPersonalTrainer;
-        public bool WantsaGroupClass;
+        public bool WantsPersonalTrainer;
+        public bool WantsGroupClass;
         public bool ListMedicalConditions;
         public bool WantsHighIntensity;
         public bool HasSignedWaiver;
@@ -64,9 +64,9 @@ namespace COMP003A.Final
             int visitPerWeek,
             int experienceLevel,
             double bmi,
-            bool wantsAPersonalTrainer,
-            bool wantsAGroupClass,
-            bool listMedicalCOnditions,
+            bool wantsPersonalTrainer,
+            bool wantsGroupClass,
+            bool listMedicalConditions,
             bool wantsHighIntensity,
             bool hasSignedWaiver,
             bool wantsTextUpdates,
@@ -75,7 +75,37 @@ namespace COMP003A.Final
 
          )
         {
+            //
+            FirstName = firstname;
+            LastName = lastName;
+            PhoneNumber = phoneNumber;
+            Email = email;
+            Address = address;
+            City = city;
+            State = state;
+            PostalCode = postalCode;
+            EmergencyContactName = emergencyContactName;
+            EmergencyContactNumber = emergencyContactNumber;
+            Goals = goals;
+            Memberships = memberships;
+            PaymentMethods = paymentMethod;
 
+            Age = age;
+            Height = height;
+            Weight = weight;
+            VisitPerWeek = visitPerWeek;
+            ExperienceLevel = experienceLevel;
+            Bmi = bmi;
+
+            WantsPersonalTrainer = wantsPersonalTrainer;
+            WantsGroupClass = wantsGroupClass;
+            ListMedicalConditions = listMedicalConditions;
+            WantsHighIntensity = wantsHighIntensity;
+            HasSignedWaiver = hasSignedWaiver;
+            WantsTextUpdates = wantsTextUpdates;
+
+            RiskLevel = riskLevel;
+            OnboardingTrack = onboardingTrack; 
         }
     }
 }
