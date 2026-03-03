@@ -6,7 +6,7 @@ namespace COMP003A.Final
 {
     internal class GymMemberEnroll
     {
-        // String fields
+        // String Fields
         public string FirstName;
         public string LastName;
         public string PhoneNumber;
@@ -33,5 +33,15 @@ namespace COMP003A.Final
         public int ExperienceLevel;
 
         public double Bmi;
+
+        // Boolean Fields
+        public bool WantsaPersonalTrainer;
+        public bool WantsaGroupClass;
+        public bool ListMedicalConditions;
+        public bool WantsHighIntensity;
+        public bool HasSignedWaiver;
+        public bool WantsTextUpdates;
+
+
     }
 }
