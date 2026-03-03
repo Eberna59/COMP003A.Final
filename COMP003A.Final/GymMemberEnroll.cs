@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace COMP003A.Final
@@ -42,6 +43,39 @@ namespace COMP003A.Final
         public bool HasSignedWaiver;
         public bool WantsTextUpdates;
 
+        //
+        public GymMemberEnroll(
+            string firstname,
+            string lastName,
+            string phoneNumber,
+            string email,
+            string address,
+            string city,
+            string state,
+            string postalCode,
+            string emergencyContactName,
+            string emergencyContactNumber,
+            string goals,
+            string memberships,
+            string paymentMethod,
+            int age,
+            int height,
+            int weight,
+            int visitPerWeek,
+            int experienceLevel,
+            double bmi,
+            bool wantsAPersonalTrainer,
+            bool wantsAGroupClass,
+            bool listMedicalCOnditions,
+            bool wantsHighIntensity,
+            bool hasSignedWaiver,
+            bool wantsTextUpdates,
+            string riskLevel,
+            string onboardingTrack
 
+         )
+        {
+
+        }
     }
 }
