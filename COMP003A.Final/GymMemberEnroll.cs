@@ -18,7 +18,20 @@ namespace COMP003A.Final
         public string EmergencyContactName;
         public string EmergencyContactNumber;
 
+        public string Goals;
+        public string Memberships;
+        public string PaymentMethods;
 
+        public string RiskLevel;
+        public string OnboardingTrack;
 
+        // Numeric Fields
+        public int Age;
+        public int Height;
+        public int Weight;
+        public int VisitPerWeek;
+        public int ExperienceLevel;
+
+        public double Bmi;
     }
 }
