@@ -105,7 +105,43 @@ namespace COMP003A.Final
             WantsTextUpdates = wantsTextUpdates;
 
             RiskLevel = riskLevel;
-            OnboardingTrack = onboardingTrack; 
+            OnboardingTrack = onboardingTrack;
         }
+
+        public void DisplayFullRecord()
+        {
+            Console.WriteLine($"Name: {FirstName} {LastName}");
+            Console.WriteLine($"Phone Number: {PhoneNumber}");
+            Console.WriteLine($"Email: {Email}");
+            Console.WriteLine($"Address: {Address}, {City}, {State}, {PostalCode}");
+            Console.WriteLine($"Emergency Contact: {EmergencyContactName}, {EmergencyContactNumber}");
+
+            Console.WriteLine($"Age: {Age}");
+            Console.WriteLine($"Height (in): {Height}");
+            Console.WriteLine($"Weight (lbs): {Weight}");
+            Console.WriteLine($"Bmi: {Bmi:F1}");
+            Console.WriteLine($"Visit a Week: {VisitPerWeek}");
+            Console.WriteLine($"Experience Level: {ExperienceLevel}");
+
+            Console.WriteLine($"Goals: {Goals}");
+            Console.WriteLine($"Membership Plan: {Memberships}");
+            Console.WriteLine($"Payment: {PaymentMethods}");
+
+            Console.WriteLine($"Trainer: {WantsPersonalTrainer}");
+            Console.WriteLine($"Group Class: {WantsGroupClass}");
+            Console.WriteLine($"List Medical Conditions: {ListMedicalConditions}");
+            Console.WriteLine($"High Intensity: {WantsHighIntensity}");
+            Console.WriteLine($"Signed Waiver: {HasSignedWaiver}");
+            Console.WriteLine($"MSG Updates: {WantsTextUpdates}");
+
+            Console.WriteLine($"Risk Level: {RiskLevel}");
+            Console.WriteLine($"Onboarding Track: {OnboardingTrack}");
+        }
+
+        public string GetSummaryLine()
+        {
+            return $"Member: {FirstName } {LastName} | Plan: {Memberships} | Goals: {Goals} | Risk: {RiskLevel}";
+        }
+
     }
 }
