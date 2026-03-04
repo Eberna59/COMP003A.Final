@@ -195,11 +195,59 @@ namespace COMP003A.Final
             string riskLevel = DetermineRiskLevel(age, listMedicalConditions, wantsHighIntensity, hasSignedWaiver);
             string onboardingTrack = DetermineOnboardingTrack(experienceLevel, wantsPersonalTrainer, wantsGroupClass);
 
+            GymMemberEnroll member = new GymMemberEnroll(
+                firstName,
+                lastName,
+                phoneNumber,
+                email,
+                address,
+                city,
+                state,
+                postalCode,
+                emergencyContactName,
+                emergecncyContactNumber,
+                goals,
+                memberships,
+                paymentMethods,
+                age,
+                height,
+                weight,
+                visitPerWeek,
+                experienceLevel,
+                bmi,
+                wantsPersonalTrainer,
+                wantsGroupClass,
+                listMedicalConditions,
+                wantsHighIntensity,
+                hasSignedWaiver,
+                wantsTextUpdates,
+                riskLevel,
+                onboardingTrack
+             );
 
+            records.Add( member );
 
+            Console.WriteLine("\nRecord added!");
+            Console.WriteLine(member.GetSummaryLine());
 
+        }
 
+        static string ReadMemberships()
+        {
+            Console.WriteLine("\nSelect Membership:");
+            Console.WriteLine("1. Basic");
+            Console.WriteLine("2. Premium");
+            Console.WriteLine("3. VIP");
 
+            int choice = ReadInt("Choice (1-3): ", 1, 3);
+
+            switch (choice)
+            {
+                case 1: return "Basic";
+                case 2: return "Premium";
+                case 3: return "VIP";
+                default: return "Basic";
+            }
         }
 
     }
