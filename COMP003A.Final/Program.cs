@@ -1,4 +1,6 @@
-﻿namespace COMP003A.Final
+﻿using System.Net.NetworkInformation;
+
+namespace COMP003A.Final
 {
     internal class Program
     {
@@ -121,7 +123,7 @@
 
                     if (value >= min && value <= max)
                     {
-                        return value; 
+                        return value;
                     }
 
                     Console.WriteLine($"Enter a value betwwem {min} and {max}");
@@ -135,7 +137,7 @@
 
         static double ReadDouble(string prompt, double min, double max)
         {
-            while(true)
+            while (true)
             {
                 Console.Write(prompt);
                 string input = Console.ReadLine();
@@ -157,6 +159,48 @@
             }
         }
 
+        static void AddNewRecord(List<GymMemberEnroll> records)
+        {
+            Console.WriteLine("\n Add New Gym Member Record ");
+
+            string firstName = ReadNonEmpty("First Name: ");
+            string lastName = ReadNonEmpty("Last Name: ");
+            string phoneNumber = ReadNonEmpty("Phone Number: ");
+            string email = ReadNonEmpty("Email: ");
+            string address = ReadNonEmpty("Address: ");
+            string city = ReadNonEmpty("City: ");
+            string state = ReadNonEmpty("State: ");
+            string postalCode = ReadNonEmpty("Postal Code: ");
+            string emergencyContactName = ReadNonEmpty("Emergency Contact Name: ");
+            string emergecncyContactNumber = ReadNonEmpty("Emergency Contact Number: ");
+
+            string goals = ReadGoals();
+            string memberships = ReadMemberships();
+            string paymentMethods = ReadPaymentMethod();
+
+            int age = ReadInt("Age (13-100: ", 14, 100);
+            int height = ReadInt("Height (feet 4-7): ", 4, 7);
+            int weight = ReadInt("Weight (lbs 70-500):", 70, 500);
+            int visitPerWeek = ReadInt("Visits Per Week 0-20: ", 0, 20);
+            int experienceLevel = ReadInt("Experience Level (0=Beginner, 1=Intermediate, 2=Expert): ", 0, 2);
+
+            bool wantsPersonalTrainer = ReadYesNo("Wants personal trainer? (Y/N): ");
+            bool wantsGroupClass = ReadYesNo("Wants group class? (Y/N): ");
+            bool wantsHighIntensity = ReadYesNo("Wants High Intensity (Y/N): ");
+            bool listMedicalConditions = ReadYesNo("Has Medical Conditions? (Y/N): ");
+            bool hasSignedWaiver = ReadYesNo("Signed Waiver? (Y/N): ");
+            bool wantsTextUpdates = ReadYesNo("Wants text updates? Y/N: ");
+
+            double bmi = CalculateBmi(height, weight);
+            string riskLevel = DetermineRiskLevel(age, listMedicalConditions, wantsHighIntensity, hasSignedWaiver);
+            string onboardingTrack = DetermineOnboardingTrack(experienceLevel, wantsPersonalTrainer, wantsGroupClass);
+
+
+
+
+
+
+        }
 
     }
 }
