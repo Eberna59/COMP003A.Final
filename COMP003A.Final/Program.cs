@@ -312,10 +312,55 @@ namespace COMP003A.Final
             }
         }
 
+        static string DetermineOnboardingTrack (int experienceLevel, bool wantsPersonalTrainer, bool wantsGroupClass)
+        {
+            if (experienceLevel == 0)
+            {
+                if (wantsPersonalTrainer || wantsGroupClass)
+                {
+                    return "Beginner + Guided";
+                }
+                else
+                {
+                    return "Beginner Self Start";
+                }
 
+            }
+            else
+            {
+                if (wantsPersonalTrainer && wantsGroupClass)
+                {
+                    return "Performance + Coaching + Classes";
+                }
+                else if (wantsPersonalTrainer || wantsGroupClass)
+                {
+                    return "Intermediate/Advanced + Guided";
+                }
+                else
+                {
+                    return "Intermediate/Advanced Self Start";
+                }
+            }
+        }
         
+        static void ViewAllRecords(List<GymMemberEnroll> records)
+        {
+            Console.WriteLine("\nView ALl Records");
 
+            if (records.Count ==  0)
+            {
+                Console.WriteLine("No Records Available");
+                return;
+            }
 
+            int num = 1;
 
+            foreach (GymMemberEnroll m in records)
+            {
+                Console.WriteLine($"\nRecord #{num}");
+                m.DisplayFullRecord();
+                num++;
+            }
+           
     }
 }
