@@ -1,4 +1,5 @@
-﻿using System.Net.NetworkInformation;
+﻿using System;
+using System.Collections.Generic;
 
 namespace COMP003A.Final
 {
@@ -33,7 +34,7 @@ namespace COMP003A.Final
                         break;
 
                     case 4:
-                        ViewStatistics(records);
+                        DisplayViewStatistics(records);
                         break;
 
                     case 5:
@@ -281,7 +282,7 @@ namespace COMP003A.Final
             if (choice == 1) return "Muscle Gain";
             else if (choice == 2) return "Weight Loss";
             else if (choice == 3) return "Regular Fitness";
-            else return "Athletic Performance"; 
+            else return "Athletic Performance";
         }
 
         static double CalculateBmi(int height, int weight)
@@ -312,7 +313,7 @@ namespace COMP003A.Final
             }
         }
 
-        static string DetermineOnboardingTrack (int experienceLevel, bool wantsPersonalTrainer, bool wantsGroupClass)
+        static string DetermineOnboardingTrack(int experienceLevel, bool wantsPersonalTrainer, bool wantsGroupClass)
         {
             if (experienceLevel == 0)
             {
@@ -342,12 +343,12 @@ namespace COMP003A.Final
                 }
             }
         }
-        
+
         static void ViewAllRecords(List<GymMemberEnroll> records)
         {
             Console.WriteLine("\nView ALl Records");
 
-            if (records.Count ==  0)
+            if (records.Count == 0)
             {
                 Console.WriteLine("No Records Available");
                 return;
@@ -361,6 +362,122 @@ namespace COMP003A.Final
                 m.DisplayFullRecord();
                 num++;
             }
-           
+
+        }
+
+        static void SearchRecords(List<GymMemberEnroll> records)
+        {
+            Console.WriteLine("\nSeach Records");
+            Console.WriteLine("Search by: ");
+            Console.WriteLine("1. Last Name");
+            Console.WriteLine("2. Email");
+            Console.WriteLine("3. Membership");
+            int choice = ReadInt("Choice (1-3): ", 1, 3);
+
+            string query = ReadNonEmpty("Enter search value: ");
+            bool found = false;
+
+            foreach (GymMemberEnroll m in records)
+            {
+                bool match = false;
+
+                if (choice == 1)
+                {
+                    if (m.LastName.Equals(query, StringComparison.OrdinalIgnoreCase))
+                    {
+                        match = true;
+                    }
+                }
+                else if (choice == 2)
+                {
+                    if (m.Email.Equals(query, StringComparison.OrdinalIgnoreCase))
+                    {
+                        match = true;
+                    }
+                }
+                else
+                {
+                    if (m.Memberships.Equals(query, StringComparison.OrdinalIgnoreCase))
+                    {
+                        match = true;
+                    }
+                }
+
+                if (match)
+                {
+                    found = true;
+                    Console.WriteLine("\nMatch Found: ");
+                    m.DisplayFullRecord();
+                }
+
+
+            }
+            if (!found)
+            {
+                Console.WriteLine("No matching records found");
+            }
+        }
+
+        static void DisplayViewStatistics(List<GymMemberEnroll> records)
+        {
+            Console.WriteLine("\nSummary Statustucs");
+
+            if (records.Count == 0)
+            {
+                Console.WriteLine("No records available");
+                return;
+            }
+
+            int totalAge = 0;
+            double totalBmi = 0.0;
+            int trainerCount = 0;
+            int highRiskCount = 0;
+
+            for (int i = 0; i < records.Count; i++)
+            {
+                totalAge += records[i].Age;
+                totalBmi += records[i].Bmi;
+
+                if (records[i].WantsPersonalTrainer)
+                {
+                    trainerCount++;
+                }
+
+                if (records[i].RiskLevel == "High")
+                {
+                    highRiskCount++;
+                }
+            }
+
+            double avgAge = (double)totalAge / records.Count;
+            double avgBmi = totalBmi / records.Count;
+            double trainerPercent = ((double)trainerCount / records.Count) * 100.0;
+
+            Console.WriteLine($"Total members: {records.Count}");
+            Console.WriteLine($"Average age: {avgAge:F1}");
+            Console.WriteLine($"Average BMI: {avgBmi:F1}");
+            Console.WriteLine($"Personal trainer request: {trainerCount}({trainerPercent:F1}%)");
+            Console.WriteLine($"High risk members: {highRiskCount}");
+
+        }
+
+        static void SeedDemoRecords(List<GymMemberEnroll> records)
+        {
+            records.Add(new GymMemberEnroll(
+               "Kai", "Whitlock", "555-111-2222", "Kai.w@fakemail.com",
+               "123 Dale St", "Lemoore", "CA", "93245",
+               "Evan", "555-222-1111",
+               "Regular Fitness",
+               "Basic",
+               "Card",
+               21, 5, 158, 4, 1,
+               25.1,
+               true, true, false, true, true, true,
+               "Low",
+               "Intermediate/Advanced + Guided"
+
+                ));
+        }
+
     }
 }
