@@ -225,7 +225,7 @@ namespace COMP003A.Final
                 onboardingTrack
              );
 
-            records.Add( member );
+            records.Add(member);
 
             Console.WriteLine("\nRecord added!");
             Console.WriteLine(member.GetSummaryLine());
@@ -249,6 +249,73 @@ namespace COMP003A.Final
                 default: return "Basic";
             }
         }
+
+        static string ReadPaymentMethod()
+        {
+            Console.WriteLine("\nSelect Payment Method: ");
+            Console.WriteLine("1. Card");
+            Console.WriteLine("2. Cash");
+            Console.WriteLine("3. Check");
+
+            int choice = ReadInt("Choice (1-3): ", 1, 3);
+
+            switch (choice)
+            {
+                case 1: return "Card";
+                case 2: return "Cash";
+                case 3: return "Check";
+                default: return "Card";
+            }
+        }
+
+        static string ReadGoals()
+        {
+            Console.WriteLine("\nSelect Goal");
+            Console.WriteLine("1. Muscle Gain");
+            Console.WriteLine("2. Weight Loss");
+            Console.WriteLine("3. Regular Fitness");
+            Console.WriteLine("4. Athletic FItness");
+
+            int choice = ReadInt("Choice (1-4): ", 1, 4);
+
+            if (choice == 1) return "Muscle Gain";
+            else if (choice == 2) return "Weight Loss";
+            else if (choice == 3) return "Regular Fitness";
+            else return "Athletic Performance"; 
+        }
+
+        static double CalculateBmi(int height, int weight)
+        {
+            double heightSquared = (double)height * height;
+            return (weight / heightSquared) * 703.0;
+        }
+
+        static string DetermineRiskLevel(int age, bool listMedicalConditions, bool wantsHighIntensity, bool hasSignedWaiver)
+        {
+            if (!hasSignedWaiver)
+            {
+                return "High";
+            }
+
+            if (listMedicalConditions && wantsHighIntensity)
+            {
+                return "High";
+            }
+
+            else if (age >= 60 || listMedicalConditions)
+            {
+                return "Medium";
+            }
+            else
+            {
+                return "Low";
+            }
+        }
+
+
+        
+
+
 
     }
 }
